@@ -3,5 +3,8 @@
   "version": "1.0.0",
   "description": "Gulpify is a simple Gulp boilerplate to automate your front-end workflow.",
   "author": "Stepan Korshukov",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^5.0.0"
+  }
 }
