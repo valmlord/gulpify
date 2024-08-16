@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Breaking News",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "author": "John Doe",
+    "date": "2022-09-01"
+  },
+  {
+    "title": "Latest Updates",
+    "description": "Nulla facilisi. Sed euismod mauris vel ex tincidunt, ac aliquam nunc aliquet.",
+    "author": "Jane Smith",
+    "date": "2022-09-02"
+  },
+  {
+    "title": "In-depth Analysis",
+    "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.",
+    "author": "Robert Johnson",
+    "date": "2022-09-03"
+  }
+]
