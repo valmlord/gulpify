@@ -3,11 +3,21 @@ import fileInclude from 'gulp-file-include';
 import htmlMin from 'gulp-htmlmin';
 import size from 'gulp-size';
 import browserSync from 'browser-sync';
+import plumber from 'gulp-plumber';
+import notify from 'gulp-notify';
 
 const server = browserSync.create();
 
 const buildHTML = () =>
   src('app/html/*.html')
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: 'HTML',
+          message: '<%= error.message %>',
+        })),
+      }),
+    )
     .pipe(fileInclude())
     .pipe(size({ title: 'HTML before compression:' }))
     .pipe(
@@ -25,6 +35,7 @@ const serve = () => {
     server: {
       baseDir: './build',
     },
+    open: false,
   });
 };
 
