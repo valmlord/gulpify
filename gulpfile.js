@@ -5,6 +5,7 @@ import size from 'gulp-size';
 import browserSync from 'browser-sync';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
+import { deleteAsync } from 'del';
 
 const server = browserSync.create();
 
@@ -39,11 +40,13 @@ const serve = () => {
   });
 };
 
+const clear = () => deleteAsync('./build');
+
 const watcher = () => {
   watch('app/html/**/*.html', buildHTML);
   watch('build/*.html').on('change', server.reload);
 };
 
-export { buildHTML, watcher, serve };
+export { buildHTML, watcher, serve, clear };
 
-export default series(buildHTML, parallel(serve, watcher));
+export default series(clear, buildHTML, parallel(serve, watcher));
