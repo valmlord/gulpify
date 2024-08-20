@@ -1,4 +1,5 @@
 import { src, dest, series, watch, parallel } from 'gulp';
+import pug from 'gulp-pug';
 import fileInclude from 'gulp-file-include';
 import htmlMin from 'gulp-htmlmin';
 import size from 'gulp-size';
@@ -31,6 +32,28 @@ const buildHTML = () =>
     .pipe(dest('./build'))
     .pipe(server.stream());
 
+const buildPug = () =>
+  src('app/pug/**/*.pug')
+    .pipe(
+      plumber({
+        errorHandler: notify.onError((error) => ({
+          title: 'Pug',
+          message: '<%= error.message %>',
+        })),
+      }),
+    )
+    .pipe(pug())
+    .pipe(size({ title: 'Pug before compression:' }))
+    .pipe(
+      htmlMin({
+        collapseWhitespace: true,
+        removeComments: true,
+      }),
+    )
+    .pipe(size({ title: 'Pug after compression:' }))
+    .pipe(dest('./build'))
+    .pipe(server.stream());
+
 const serve = () => {
   server.init({
     server: {
@@ -47,6 +70,10 @@ const watcher = () => {
   watch('build/*.html').on('change', server.reload);
 };
 
-export { buildHTML, watcher, serve, clear };
+export { buildHTML, buildPug, watcher, serve, clear };
 
-export default series(clear, buildHTML, parallel(serve, watcher));
+export default series(
+  clear,
+  parallel(buildHTML, buildPug),
+  parallel(serve, watcher),
+);
