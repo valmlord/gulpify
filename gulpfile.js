@@ -8,41 +8,27 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import { deleteAsync } from 'del';
 
+import advantagesDate from './data/advantages.json' assert { type: 'json' };
+
 const server = browserSync.create();
 
 const buildHTML = () =>
-  src('app/html/*.html')
+  src('app/pug/*.pug')
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
-          title: 'HTML',
+          title: 'PUG',
           message: '<%= error.message %>',
         })),
       }),
     )
-    .pipe(fileInclude())
-    .pipe(size({ title: 'HTML before compression:' }))
     .pipe(
-      htmlMin({
-        collapseWhitespace: true,
-        removeComments: true,
+      pug({
+        data: {
+          advantages: advantagesDate,
+        },
       }),
     )
-    .pipe(size({ title: 'HTML after compression:' }))
-    .pipe(dest('./build'))
-    .pipe(server.stream());
-
-const buildPug = () =>
-  src('app/pug/**/*.pug')
-    .pipe(
-      plumber({
-        errorHandler: notify.onError((error) => ({
-          title: 'Pug',
-          message: '<%= error.message %>',
-        })),
-      }),
-    )
-    .pipe(pug())
     .pipe(size({ title: 'Pug before compression:' }))
     .pipe(
       htmlMin({
@@ -66,14 +52,10 @@ const serve = () => {
 const clear = () => deleteAsync('./build');
 
 const watcher = () => {
-  watch('app/html/**/*.html', buildHTML);
-  watch('build/*.html').on('change', server.reload);
+  watch('app/pug/**/*.pug', buildHTML);
+  watch('build/*.pug').on('change', server.reload);
 };
 
-export { buildHTML, buildPug, watcher, serve, clear };
+export { buildHTML, watcher, serve, clear };
 
-export default series(
-  clear,
-  parallel(buildHTML, buildPug),
-  parallel(serve, watcher),
-);
+export default series(clear, buildHTML, parallel(serve, watcher));

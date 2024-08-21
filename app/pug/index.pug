@@ -1,11 +1,11 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title Document
-  body
-    header
-      h1 My Website
-    main 
-    footer
+extends templates/layout
+
+block mainContent
+  h2 Welcome to the Gulpify.
+  p It is a simple boilerplate to automate your front-end workflow.
+  ul
+    each item in advantages 
+      li
+        h3= item.title
+        p= item.description
+        span= item.benefit
