@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Task Automation",
+    "description": "Gulpify allows you to automate a variety of tasks such as Pug compilation, HTML minification, and much more.",
+    "benefit": "Saves time and reduces manual work"
+  },
+  {
+    "title": "Ease of Use",
+    "description": "Gulpify provides a simple and intuitive interface for setting up and running tasks, making it accessible for developers of all levels.",
+    "benefit": "User-friendly and easy to learn"
+  },
+  {
+    "title": "Extensibility",
+    "description": "Gulpify is easily extendable with a wide range of plugins, allowing you to tailor it to the specific needs of your project.",
+    "benefit": "Highly customizable and flexible"
+  }
+]
