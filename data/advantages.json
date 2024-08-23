@@ -13,5 +13,15 @@
     "title": "Extensibility",
     "description": "Gulpify is easily extendable with a wide range of plugins, allowing you to tailor it to the specific needs of your project.",
     "benefit": "Highly customizable and flexible"
+  },
+  {
+    "title": "Performance",
+    "description": "Gulpify is built on Node.js, which provides fast and efficient task execution, resulting in quicker build times.",
+    "benefit": "Improves project performance and speed"
+  },
+  {
+    "title": "Community Support",
+    "description": "Gulpify has a large and active community of developers who contribute plugins, provide support, and share best practices.",
+    "benefit": "Access to resources and expertise"
   }
 ]

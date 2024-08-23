@@ -1,18 +1,19 @@
 import { src, dest } from 'gulp';
 import gulpSass from 'gulp-sass';
-import sass from 'sass';
+import * as sass from 'sass';
 import autoprefixer from 'gulp-autoprefixer';
 import cleanCSS from 'gulp-clean-css';
 import sourcemaps from 'gulp-sourcemaps';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import browserSync from 'browser-sync';
+import size from 'gulp-size';
 
-const server = browserSync.create();
 const sassCompiler = gulpSass(sass);
 
+import paths from '../config/paths.js';
+
 const buildSCSS = () =>
-  src('app/scss/**/*.scss')
+  src(paths.scss.dev)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -22,11 +23,13 @@ const buildSCSS = () =>
       }),
     )
     .pipe(sourcemaps.init())
+    .pipe(size({ title: 'CSS before compilation:' }))
     .pipe(sassCompiler().on('error', sassCompiler.logError))
     .pipe(autoprefixer())
+    .pipe(size({ title: 'CSS after autoprefixer:' }))
     .pipe(cleanCSS())
+    .pipe(size({ title: 'CSS after minification:' }))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest('build/css'))
-    .pipe(server.stream());
+    .pipe(dest(paths.scss.build));
 
 export default buildSCSS;

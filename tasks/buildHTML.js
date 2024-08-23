@@ -4,13 +4,14 @@ import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import htmlMin from 'gulp-htmlmin';
 import size from 'gulp-size';
-import browserSync from 'browser-sync';
-import advantagesDate from '../data/advantages.json' assert { type: 'json' };
 
-const server = browserSync.create();
+import paths from '../config/paths.js';
+import loadData from './loadData.js';
 
-const buildHTML = () =>
-  src('app/pug/*.pug')
+const buildHTML = () => {
+  const data = loadData('./data');
+
+  return src(paths.pug.dev)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -21,20 +22,19 @@ const buildHTML = () =>
     )
     .pipe(
       pug({
-        data: {
-          advantages: advantagesDate,
-        },
+        locals: data,
+        pretty: true,
       }),
     )
-    .pipe(size({ title: 'Pug before compression:' }))
+    .pipe(size({ title: 'HTML before compression:' }))
     .pipe(
       htmlMin({
         collapseWhitespace: true,
         removeComments: true,
       }),
     )
-    .pipe(size({ title: 'Pug after compression:' }))
-    .pipe(dest('./build'))
-    .pipe(server.stream());
+    .pipe(size({ title: 'HTML after compression:' }))
+    .pipe(dest(paths.html.build));
+};
 
 export default buildHTML;
