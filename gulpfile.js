@@ -1,61 +1,36 @@
-import { src, dest, series, watch, parallel } from 'gulp';
-import pug from 'gulp-pug';
-import fileInclude from 'gulp-file-include';
-import htmlMin from 'gulp-htmlmin';
-import size from 'gulp-size';
+import { series, parallel, watch } from 'gulp';
 import browserSync from 'browser-sync';
-import plumber from 'gulp-plumber';
-import notify from 'gulp-notify';
-import { deleteAsync } from 'del';
-
-import advantagesDate from './data/advantages.json' assert { type: 'json' };
+import paths from './config/paths.js';
 
 const server = browserSync.create();
 
-const buildHTML = () =>
-  src('app/pug/*.pug')
-    .pipe(
-      plumber({
-        errorHandler: notify.onError((error) => ({
-          title: 'PUG',
-          message: '<%= error.message %>',
-        })),
-      }),
-    )
-    .pipe(
-      pug({
-        data: {
-          advantages: advantagesDate,
-        },
-      }),
-    )
-    .pipe(size({ title: 'Pug before compression:' }))
-    .pipe(
-      htmlMin({
-        collapseWhitespace: true,
-        removeComments: true,
-      }),
-    )
-    .pipe(size({ title: 'Pug after compression:' }))
-    .pipe(dest('./build'))
-    .pipe(server.stream());
+import buildHTML from './tasks/buildHTML.js';
+import buildSCSS from './tasks/buildSCSS.js';
+import clear from './tasks/clear.js';
 
-const serve = () => {
-  server.init({
-    server: {
-      baseDir: './build',
-    },
-    open: false,
+const serve = async () => {
+  await new Promise((resolve) => {
+    server.init(
+      {
+        server: {
+          baseDir: paths.root,
+        },
+        open: false,
+      },
+      resolve,
+    );
   });
 };
 
-const clear = () => deleteAsync('./build');
-
 const watcher = () => {
-  watch('app/pug/**/*.pug', buildHTML);
-  watch('build/*.pug').on('change', server.reload);
+  watch(paths.pug.watch, buildHTML);
+  watch(paths.scss.dev, buildSCSS);
+  watch(paths.html.build).on('change', server.reload);
+  watch(paths.css.build).on('change', server.reload);
+  watch(paths.scss.dev).on('change', server.reload);
+  watch(paths.data.watch).on('change', series(buildHTML, server.reload));
 };
 
-export { buildHTML, watcher, serve, clear };
+export { buildHTML, buildSCSS, serve, clear, watcher };
 
-export default series(clear, buildHTML, parallel(serve, watcher));
+export default series(clear, parallel(buildHTML, buildSCSS), serve, watcher);
