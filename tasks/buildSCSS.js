@@ -12,6 +12,8 @@ const sassCompiler = gulpSass(sass);
 
 import paths from '../config/paths.js';
 
+import { parameters } from '../config/parameters.js';
+
 const buildSCSS = () =>
   src(paths.scss.dev)
     .pipe(
@@ -25,7 +27,7 @@ const buildSCSS = () =>
     .pipe(sourcemaps.init())
     .pipe(size({ title: 'CSS before compilation:' }))
     .pipe(sassCompiler().on('error', sassCompiler.logError))
-    .pipe(autoprefixer())
+    .pipe(autoprefixer(parameters.autoprefixer))
     .pipe(size({ title: 'CSS after autoprefixer:' }))
     .pipe(cleanCSS())
     .pipe(size({ title: 'CSS after minification:' }))

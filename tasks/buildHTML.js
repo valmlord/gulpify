@@ -1,11 +1,13 @@
 import { src, dest } from 'gulp';
 import pug from 'gulp-pug';
+import htmlMin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import htmlMin from 'gulp-htmlmin';
 import size from 'gulp-size';
 
 import paths from '../config/paths.js';
+import parameters from '../config/parameters.js';
+
 import loadData from './loadData.js';
 
 const buildHTML = () => {
@@ -27,12 +29,7 @@ const buildHTML = () => {
       }),
     )
     .pipe(size({ title: 'HTML before compression:' }))
-    .pipe(
-      htmlMin({
-        collapseWhitespace: true,
-        removeComments: true,
-      }),
-    )
+    .pipe(htmlMin(parameters.htmlmin))
     .pipe(size({ title: 'HTML after compression:' }))
     .pipe(dest(paths.html.build));
 };
