@@ -8,3 +8,5 @@ const parameters = {
     cascade: false,
   },
 };
+
+export default parameters;

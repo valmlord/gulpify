@@ -7,15 +7,13 @@ const paths = {
     dev: `${pathDev}/pug/*.pug`,
     watch: `${pathDev}/pug/**/*.pug`,
   },
-  scss: {
-    dev: `${pathDev}/scss/**/*.scss`,
-    build: `${pathBuild}/css`,
-  },
   html: {
     build: pathBuild,
   },
   css: {
-    build: `${pathBuild}/css/*.css`,
+    dev: `${pathDev}/scss/**/*.scss`,
+    watch: `${pathDev}/scss/**/*.scss`,
+    build: `${pathBuild}/css`,
   },
   data: {
     watch: './data/**/*.json',
