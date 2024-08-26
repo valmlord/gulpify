@@ -13,7 +13,7 @@ import loadData from './loadData.js';
 const buildHTML = () => {
   const data = loadData('./data');
 
-  return src(paths.pug.dev)
+  return src(paths.html.dev)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({

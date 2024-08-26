@@ -4,7 +4,9 @@ const parameters = {
     removeComments: true,
   },
   autoprefixer: {
-    overrideBrowserslist: ['last 2 versions'],
+    overrideBrowserslist: ['last 3 versions'],
     cascade: false,
   },
 };
+
+export default parameters;

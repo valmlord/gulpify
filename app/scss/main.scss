@@ -1,9 +1,15 @@
-h2 {
-  color: red;
-  font-size: 20px;
-}
+// Variables, mixins, functions
+@import 'helpers/variables';
+@import 'helpers/mixins';
+@import 'helpers/functions';
 
-li {
-  color: blue;
-  font-size: 20px;
-}
+// SCSS libs
+@import 'vendor/libs';
+
+// General
+@import 'base/fonts';
+@import 'base/general';
+
+// Components
+@import 'components/header';
+@import 'components/footer';
