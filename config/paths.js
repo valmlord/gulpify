@@ -3,16 +3,14 @@ const pathBuild = './build';
 
 const paths = {
   root: pathBuild,
-  pug: {
+  html: {
     dev: `${pathDev}/pug/*.pug`,
     watch: `${pathDev}/pug/**/*.pug`,
-  },
-  html: {
-    build: pathBuild,
+    build: `${pathBuild}`,
   },
   css: {
-    dev: `${pathDev}/scss/**/*.scss`,
-    watch: `${pathDev}/scss/**/*.scss`,
+    dev: `${pathDev}/scss/*.{scss,sass}`,
+    watch: `${pathDev}/scss/**/*.{scss,sass}`,
     build: `${pathBuild}/css`,
   },
   data: {

@@ -1,8 +1,8 @@
 import { series, parallel, watch } from 'gulp';
 import browserSync from 'browser-sync';
-import paths from './config/paths.js';
-
 const server = browserSync.create();
+
+import paths from './config/paths.js';
 
 import buildHTML from './tasks/buildHTML.js';
 import buildCSS from './tasks/buildCSS.js';
@@ -23,10 +23,8 @@ const serve = async () => {
 };
 
 const watcher = () => {
-  watch(paths.pug.watch, buildHTML);
-  watch(paths.css.watch, buildCSS);
-  watch(paths.html.build).on('all', server.reload);
-  watch(paths.css.build).on('all', server.reload);
+  watch(paths.html.watch).on('all', series(buildHTML, server.reload));
+  watch(paths.css.watch).on('all', series(buildCSS, server.reload));
   watch(paths.data.watch).on('all', series(buildHTML, server.reload));
 };
 
