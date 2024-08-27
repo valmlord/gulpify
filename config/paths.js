@@ -13,6 +13,11 @@ const paths = {
     watch: `${pathDev}/scss/**/*.{scss,sass}`,
     build: `${pathBuild}/css`,
   },
+  js: {
+    dev: `${pathDev}/js/*.js`,
+    watch: `${pathDev}/js/**/*.js`,
+    build: `${pathBuild}/js`,
+  },
   data: {
     watch: './data/**/*.json',
   },

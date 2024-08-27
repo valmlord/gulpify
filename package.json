@@ -8,13 +8,18 @@
   "browserslist": [
     "last 3 versions"
   ],
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "scripts": {
     "lint": "eslint .",
     "gulp": "gulp"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@babel/preset-env": "^7.25.3",
+    "@babel/preset-env": "^7.25.4",
     "@babel/register": "^7.24.6",
     "browser-sync": "^3.0.2",
     "del": "^7.1.0",
@@ -23,6 +28,7 @@
     "eslint-plugin-import": "^2.29.1",
     "gulp": "^5.0.0",
     "gulp-autoprefixer": "^9.0.0",
+    "gulp-babel": "^8.0.0",
     "gulp-csso": "^4.0.1",
     "gulp-file-include": "^2.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
@@ -39,7 +45,9 @@
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-standard": "^36.0.1",
     "stylelint-order": "^6.0.4",
-    "stylelint-scss": "^6.5.0"
+    "stylelint-scss": "^6.5.0",
+    "webpack": "^5.94.0",
+    "webpack-stream": "^7.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.3"
