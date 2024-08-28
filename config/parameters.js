@@ -13,6 +13,9 @@ const parameters = {
       filename: 'main.min.js',
     },
   },
+  imagemin: {
+    verbose: true,
+  },
 };
 
 export default parameters;
