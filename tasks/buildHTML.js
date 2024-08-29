@@ -4,6 +4,7 @@ import htmlMin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import size from 'gulp-size';
+import webpHTML from 'gulp-webp-html';
 
 import paths from '../config/paths.js';
 import parameters from '../config/parameters.js';
