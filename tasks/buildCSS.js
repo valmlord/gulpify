@@ -9,6 +9,7 @@ import csso from 'gulp-csso';
 import rename from 'gulp-rename';
 import shorthand from 'gulp-shorthand';
 import groupCSSMediaQueries from 'gulp-group-css-media-queries';
+import webpCss from 'gulp-webp-css';
 
 const sassCompiler = gulpSass(sass);
 
@@ -26,6 +27,7 @@ const buildCSS = () =>
       }),
     )
     .pipe(sassCompiler({ quietDeps: true }).on('error', sassCompiler.logError))
+    .pipe(webpCss())
     .pipe(autoprefixer(parameters.autoprefixer))
     .pipe(shorthand())
     .pipe(groupCSSMediaQueries())

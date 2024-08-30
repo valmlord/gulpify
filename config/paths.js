@@ -19,7 +19,7 @@ const paths = {
     build: `${pathBuild}/js`,
   },
   images: {
-    dev: `${pathDev}/assets/img/*.{jpg,jpeg,png,gif,svg}`,
+    dev: `${pathDev}/assets/img/**/*.{jpg,jpeg,png,gif,svg}`,
     watch: `${pathDev}/assets/img/**/*.{jpg,jpeg,png,gif,svg}`,
     build: `${pathBuild}/assets/img`,
   },
