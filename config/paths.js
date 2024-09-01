@@ -23,6 +23,11 @@ const paths = {
     watch: `${pathDev}/assets/img/**/*.{jpg,jpeg,png,gif,svg}`,
     build: `${pathBuild}/assets/img`,
   },
+  fonts: {
+    dev: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
+    watch: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
+    build: `${pathBuild}/assets/fonts`,
+  },
   data: {
     watch: './data/**/*.json',
   },

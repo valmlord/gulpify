@@ -16,6 +16,10 @@ const parameters = {
   imagemin: {
     verbose: true,
   },
+  fonter: {
+    subset: [66, 67, 68, 69, 70, 71],
+    formats: ['ttf', 'woff', 'eot', 'svg'],
+  },
 };
 
 export default parameters;

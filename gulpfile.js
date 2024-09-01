@@ -8,6 +8,7 @@ import buildHTML from './tasks/buildHTML.js';
 import buildCSS from './tasks/buildCSS.js';
 import buildJS from './tasks/buildJS.js';
 import compressIMG from './tasks/compressIMG.js';
+import buildFonts from './tasks/buildFonts.js';
 import clear from './tasks/clear.js';
 
 const serve = async () => {
@@ -29,13 +30,23 @@ const watcher = () => {
   watch(paths.css.watch).on('all', series(buildCSS, server.reload));
   watch(paths.js.watch).on('all', series(buildJS, server.reload));
   watch(paths.images.watch).on('all', series(compressIMG, server.reload));
+  watch(paths.fonts.watch).on('all', series(buildFonts, server.reload));
   watch(paths.data.watch).on('all', series(buildHTML, server.reload));
 };
 
-export { buildHTML, buildCSS, buildJS, compressIMG, serve, clear, watcher };
+export {
+  buildHTML,
+  buildCSS,
+  buildJS,
+  compressIMG,
+  buildFonts,
+  serve,
+  clear,
+  watcher,
+};
 
 export default series(
   clear,
-  parallel(buildHTML, buildCSS, buildJS, compressIMG),
+  parallel(buildHTML, buildCSS, buildJS, compressIMG, buildFonts),
   parallel(serve, watcher),
 );
