@@ -2,7 +2,7 @@ import { src, dest } from 'gulp';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
 import newer from 'gulp-newer';
-import fonter from 'gulp-fonter';
+import fonter from 'gulp-fonter-unx';
 import ttf2woff2 from 'gulp-ttf2woff2';
 
 import paths from '../config/paths.js';

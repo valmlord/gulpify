@@ -24,8 +24,8 @@ const paths = {
     build: `${pathBuild}/assets/img`,
   },
   fonts: {
-    dev: `${pathDev}/assets/fonts/**/*.{woff,woff2,otf,ttf,eot,otc,ttc,svg}`,
-    watch: `${pathDev}/assets/fonts/**/*.{woff,woff2,otf,ttf,eot,otc,ttc,svg}`,
+    dev: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
+    watch: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
     build: `${pathBuild}/assets/fonts`,
   },
   data: {

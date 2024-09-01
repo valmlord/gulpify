@@ -18,7 +18,7 @@ const parameters = {
   },
   fonter: {
     subset: [66, 67, 68, 69, 70, 71],
-    formats: ['woff', 'woff2', 'otf', 'eot', 'otc', 'ttc', 'svg'],
+    formats: ['ttf', 'woff', 'eot', 'svg'],
   },
 };
 
