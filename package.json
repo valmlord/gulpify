@@ -31,7 +31,7 @@
     "gulp-babel": "^8.0.0",
     "gulp-csso": "^4.0.1",
     "gulp-file-include": "^2.3.0",
-    "gulp-fonter-unx": "^0.3.0",
+    "gulp-fonter-2": "^0.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^9.1.0",

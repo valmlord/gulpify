@@ -1,4 +1,9 @@
+const isProd = process.argv.includes('--production');
+const isDev = !isProd;
+
 const parameters = {
+  isProd: isProd,
+
   htmlmin: {
     collapseWhitespace: true,
     removeComments: true,

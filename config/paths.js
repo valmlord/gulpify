@@ -24,9 +24,9 @@ const paths = {
     build: `${pathBuild}/assets/img`,
   },
   fonts: {
-    dev: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
-    watch: `${pathDev}/assets/fonts/**/*.{eot,ttf,otf,otc,ttc,woff,woff2,svg}`,
-    build: `${pathBuild}/assets/fonts`,
+    dev: `${pathDev}/fonts/*.ttf`,
+    watch: `${pathDev}/fonts/*.ttf`,
+    build: `${pathBuild}/fonts`,
   },
   data: {
     watch: './data/**/*.json',

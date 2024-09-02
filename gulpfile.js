@@ -34,6 +34,13 @@ const watcher = () => {
   watch(paths.data.watch).on('all', series(buildHTML, server.reload));
 };
 
+const build = series(
+  clear,
+  parallel(buildHTML, buildCSS, buildJS, compressIMG, buildFonts),
+);
+
+const dev = series(build, parallel(serve, watcher));
+
 export {
   buildHTML,
   buildCSS,
@@ -43,10 +50,6 @@ export {
   serve,
   clear,
   watcher,
+  build,
+  dev,
 };
-
-export default series(
-  clear,
-  parallel(buildHTML, buildCSS, buildJS, compressIMG, buildFonts),
-  parallel(serve, watcher),
-);
