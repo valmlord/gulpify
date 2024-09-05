@@ -29,7 +29,7 @@ const paths = {
     build: `${pathBuild}/fonts`,
   },
   data: {
-    watch: './data/**/*.json',
+    watch: './gulpfile.babel.js/data/**/*.json',
   },
 };
 

@@ -8,17 +8,14 @@
   "browserslist": [
     "last 3 versions"
   ],
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
-  },
   "scripts": {
     "lint": "eslint .",
-    "gulp": "gulp"
+    "dev": "gulp --gulpfile gulpfile.babel.js/index.js",
+    "build": "gulp --production --gulpfile gulpfile.babel.js/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
+    "@babel/node": "^7.25.0",
     "@babel/preset-env": "^7.25.4",
     "@babel/register": "^7.24.6",
     "browser-sync": "^3.0.2",
@@ -32,9 +29,12 @@
     "gulp-csso": "^4.0.1",
     "gulp-file-include": "^2.3.0",
     "gulp-fonter-2": "^0.3.0",
+    "gulp-fonter-unx": "^0.3.0",
     "gulp-group-css-media-queries": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
     "gulp-imagemin": "^9.1.0",
+    "gulp-load-plugins": "^2.0.8",
     "gulp-newer": "^1.4.0",
     "gulp-notify": "^4.0.0",
     "gulp-plumber": "^1.2.1",

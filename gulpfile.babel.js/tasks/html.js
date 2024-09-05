@@ -1,4 +1,4 @@
-import { src, dest } from 'gulp';
+import gulp from 'gulp';
 import pug from 'gulp-pug';
 import htmlMin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
@@ -11,10 +11,11 @@ import parameters from '../config/parameters.js';
 
 import loadData from './loadData.js';
 
-const buildHTML = () => {
+const html = () => {
   const data = loadData('./data');
 
-  return src(paths.html.dev)
+  return gulp
+    .src(paths.html.dev)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -33,7 +34,7 @@ const buildHTML = () => {
     .pipe(size({ title: 'HTML before compression:' }))
     .pipe(htmlMin(parameters.htmlmin))
     .pipe(size({ title: 'HTML after compression:' }))
-    .pipe(dest(paths.html.build));
+    .pipe(gulp.dest(paths.html.build));
 };
 
-export default buildHTML;
+export default html;
