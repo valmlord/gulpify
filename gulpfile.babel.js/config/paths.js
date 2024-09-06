@@ -1,5 +1,5 @@
-const pathDev = './app';
-const pathBuild = './build';
+const pathDev = '../app';
+const pathBuild = '../build';
 
 const paths = {
   root: pathBuild,
@@ -29,7 +29,7 @@ const paths = {
     build: `${pathBuild}/fonts`,
   },
   data: {
-    watch: './gulpfile.babel.js/data/**/*.json',
+    watch: `./data/*.json`,
   },
 };
 

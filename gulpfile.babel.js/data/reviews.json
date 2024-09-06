@@ -10,5 +10,17 @@
   {
     "comment": "This product is amazing. I use it every day and it's made my life so much easier.",
     "author": "Alice Johnson"
+  },
+  {
+    "comment": "I'm not a fan of this product. It didn't work for me and I wouldn't purchase it again.",
+    "author": "Bob Brown"
+  },
+  {
+    "comment": "I love this product. It's changed my life and I can't imagine living without it.",
+    "author": "Sarah Williams"
+  },
+  {
+    "comment": "This product is terrible. It's cheaply made and doesn't work as advertised.",
+    "author": "Mike Davis"
   }
 ]

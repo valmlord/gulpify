@@ -1,13 +1,10 @@
 import gulp from 'gulp';
-import pug from 'gulp-pug';
-import htmlMin from 'gulp-htmlmin';
 import plumber from 'gulp-plumber';
 import notify from 'gulp-notify';
-import size from 'gulp-size';
+import pug from 'gulp-pug';
 import webpHTML from 'gulp-webp-html';
-
-import paths from '../config/paths.js';
-import parameters from '../config/parameters.js';
+import size from 'gulp-size';
+import htmlMin from 'gulp-htmlmin';
 
 import loadData from './loadData.js';
 
@@ -15,7 +12,7 @@ const html = () => {
   const data = loadData('./data');
 
   return gulp
-    .src(paths.html.dev)
+    .src(global.$.paths.html.dev)
     .pipe(
       plumber({
         errorHandler: notify.onError((error) => ({
@@ -32,9 +29,9 @@ const html = () => {
     )
     .pipe(webpHTML())
     .pipe(size({ title: 'HTML before compression:' }))
-    .pipe(htmlMin(parameters.htmlmin))
+    .pipe(htmlMin(global.$.parameters.htmlmin))
     .pipe(size({ title: 'HTML after compression:' }))
-    .pipe(gulp.dest(paths.html.build));
+    .pipe(gulp.dest(global.$.paths.html.build));
 };
 
 export default html;

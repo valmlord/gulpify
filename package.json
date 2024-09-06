@@ -11,7 +11,15 @@
   "scripts": {
     "lint": "eslint .",
     "dev": "gulp --gulpfile gulpfile.babel.js/index.js",
-    "build": "gulp --production --gulpfile gulpfile.babel.js/index.js"
+    "build": "gulp --production --gulpfile gulpfile.babel.js/index.js",
+    "clear": "gulp clear --gulpfile gulpfile.babel.js/index.js",
+    "html": "gulp html --gulpfile gulpfile.babel.js/index.js",
+    "css": "gulp css --gulpfile gulpfile.babel.js/index.js",
+    "js": "gulp js --gulpfile gulpfile.babel.js/index.js",
+    "img": "gulp img --gulpfile gulpfile.babel.js/index.js",
+    "fonts": "gulp fonts --gulpfile gulpfile.babel.js/index.js",
+    "serve": "gulp serve --gulpfile gulpfile.babel.js/index.js",
+    "watcher": "gulp watcher --gulpfile gulpfile.babel.js/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
