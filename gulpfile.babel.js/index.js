@@ -7,6 +7,7 @@ import img from './tasks/img.js';
 import fonts from './tasks/fonts.js';
 import clear from './tasks/clear.js';
 import serve from './tasks/server.js';
+import svgSpriteTask from './tasks/svgSprite.js';
 
 const watcher = () => {
   global.$.gulp
@@ -27,14 +28,15 @@ const watcher = () => {
   global.$.gulp
     .watch(global.$.paths.data.watch)
     .on('all', global.$.gulp.series(html, global.$.server.reload));
+  global.$.gulp.task('svgSprite', svgSpriteTask);
 };
 
 const build = global.$.gulp.series(
   clear,
-  global.$.gulp.parallel(html, css, js, img, fonts),
+  global.$.gulp.parallel(html, css, js, img, fonts, svgSpriteTask),
 );
 const dev = global.$.gulp.series(build, global.$.gulp.parallel(watcher, serve));
 
-export { html, css, js, img, fonts, serve, clear, watcher };
+export { html, css, js, img, fonts, serve, clear, watcher, svgSpriteTask };
 
 export default global.$.parameters.isProd ? build : dev;
