@@ -19,7 +19,8 @@
     "img": "gulp img --gulpfile gulpfile.babel.js/index.js",
     "fonts": "gulp fonts --gulpfile gulpfile.babel.js/index.js",
     "serve": "gulp serve --gulpfile gulpfile.babel.js/index.js",
-    "watcher": "gulp watcher --gulpfile gulpfile.babel.js/index.js"
+    "watcher": "gulp watcher --gulpfile gulpfile.babel.js/index.js",
+    "sprites": "gulp svgSpriteTask --gulpfile gulpfile.babel.js/index.js"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -51,6 +52,7 @@
     "gulp-sass": "^5.1.0",
     "gulp-shorthand": "^1.1.0",
     "gulp-size": "^5.0.0",
+    "gulp-svg-sprite": "^2.0.3",
     "gulp-ttf2woff2": "^5.0.0",
     "gulp-webp": "^5.0.0",
     "gulp-webp-css": "^1.1.0",
