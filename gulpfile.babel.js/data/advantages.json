@@ -23,5 +23,10 @@
     "title": "Community Support",
     "description": "Gulpify has a large and active community of developers who contribute plugins, provide support, and share best practices.",
     "benefit": "Access to resources and expertise"
+  },
+  {
+    "title": "Error Handling",
+    "description": "Gulpify includes built-in error handling features that help you identify and resolve issues quickly, ensuring a smooth development process.",
+    "benefit": "Reduces debugging time and errors"
   }
 ]

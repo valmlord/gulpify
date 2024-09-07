@@ -16,7 +16,7 @@ const sassCompiler = gulpSass(sass);
 import paths from '../config/paths.js';
 import parameters from '../config/parameters.js';
 
-const buildCSS = () =>
+const css = () =>
   src(paths.css.dev, { sourcemaps: true })
     .pipe(
       plumber({
@@ -31,11 +31,11 @@ const buildCSS = () =>
     .pipe(autoprefixer(parameters.autoprefixer))
     .pipe(shorthand())
     .pipe(groupCSSMediaQueries())
-    .pipe(dest(paths.css.build, { sourcemaps: true }))
+    .pipe(dest(paths.css.build, { sourcemaps: parameters.isDev }))
     .pipe(size({ title: 'CSS before minification:' }))
     .pipe(csso())
     .pipe(size({ title: 'CSS after minification:' }))
     .pipe(rename({ suffix: '.min' }))
-    .pipe(dest(paths.css.build, { sourcemaps: true }));
+    .pipe(dest(paths.css.build, { sourcemaps: parameters.isDev }));
 
-export default buildCSS;
+export default css;

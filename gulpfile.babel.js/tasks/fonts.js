@@ -8,7 +8,7 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 import paths from '../config/paths.js';
 import parameters from '../config/parameters.js';
 
-const buildFonts = () =>
+const fonts = () =>
   src(paths.fonts.dev)
     .pipe(
       plumber({
@@ -24,4 +24,4 @@ const buildFonts = () =>
     .pipe(ttf2woff2())
     .pipe(dest(paths.fonts.build));
 
-export default buildFonts;
+export default fonts;
