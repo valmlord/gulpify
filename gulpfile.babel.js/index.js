@@ -8,6 +8,7 @@ import fonts from './tasks/fonts.js';
 import clear from './tasks/clear.js';
 import serve from './tasks/server.js';
 import svgSpriteTask from './tasks/svgSprite.js';
+import faviconsTask from './tasks/favicons.js';
 
 const watcher = () => {
   global.$.gulp
@@ -33,10 +34,29 @@ const watcher = () => {
 
 const build = global.$.gulp.series(
   clear,
-  global.$.gulp.parallel(html, css, js, img, fonts, svgSpriteTask),
+  global.$.gulp.parallel(
+    html,
+    css,
+    js,
+    img,
+    fonts,
+    svgSpriteTask,
+    faviconsTask,
+  ),
 );
 const dev = global.$.gulp.series(build, global.$.gulp.parallel(watcher, serve));
 
-export { html, css, js, img, fonts, serve, clear, watcher, svgSpriteTask };
+export {
+  html,
+  css,
+  js,
+  img,
+  fonts,
+  serve,
+  clear,
+  watcher,
+  svgSpriteTask,
+  faviconsTask,
+};
 
 export default global.$.parameters.isProd ? build : dev;
