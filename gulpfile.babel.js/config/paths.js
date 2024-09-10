@@ -35,6 +35,10 @@ const paths = {
   data: {
     watch: `./data/*.json`,
   },
+  favicons: {
+    dev: `${pathDev}/assets/icons/favicon.png`,
+    build: `${pathBuild}/build/assets/favicons/`,
+  },
 };
 
 export default paths;
